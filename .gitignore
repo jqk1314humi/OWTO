@@ -1,0 +1,12 @@
+# 参赛源文档与无关文件（体积大且非网页必需）
+*.docx
+*.pdf
+.workbuddy/
+义乌AI实战赛答辩/
+
+# 调试产物
+web/_shots/
+web/_dump/
+shots.ps1
+dump_text.py
+img_info.py
