@@ -89,53 +89,103 @@
       从产品创意到动态影像，让儿童遥控变形消防车拥有更具吸引力的视觉表达
     </p >
 
-<div style="position:relative;width:100%;background:#080d18;border-radius:16px;overflow:hidden;">
-    <video
+    <div style="position:relative;width:100%;background:#080d18;border-radius:16px;overflow:hidden;">
+
+      <video
         id="owtoVideo"
         controls
         playsinline
         preload="metadata"
         style="display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;"
-    >
-        <source src="https://video.jiaqinkai.asia/mmexport1794752516463.mp4" type="video/mp4">
+      >
+        <source
+          src="https://video.jiaqinkai.asia/mmexport1794752516463.mp4"
+          type="video/mp4"
+        >
         您的浏览器不支持视频播放。
-    </video>
+      </video>
 
-    <button
+      <!-- 中央播放按钮 -->
+      <button
         id="owtoPlayButton"
-        onclick="
-            const v=document.getElementById('owtoVideo');
-            v.play();
-            this.style.display='none';
-        "
+        type="button"
+        aria-label="播放视频"
         style="
-            position:absolute;
-            inset:0;
-            width:100%;
-            height:100%;
-            border:0;
-            background:rgba(0,0,0,0.18);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            cursor:pointer;
+          position:absolute;
+          inset:0;
+          width:100%;
+          height:100%;
+          border:0;
+          background:rgba(0,0,0,0.18);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          z-index:2;
         "
-    >
+      >
         <span style="
-            width:76px;
-            height:76px;
-            border-radius:50%;
-            background:rgba(255,255,255,0.95);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#142b50;
-            font-size:30px;
-            padding-left:5px;
-            box-sizing:border-box;
+          width:76px;
+          height:76px;
+          border-radius:50%;
+          background:rgba(255,255,255,0.95);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#142b50;
+          font-size:30px;
+          padding-left:5px;
+          box-sizing:border-box;
+          box-shadow:0 4px 24px rgba(0,0,0,0.25);
         ">▶</span>
-    </button>
-</div>
+      </button>
+
+    </div>
+
+    <div class="video-caption">
+      <span>OWTO AI MARKETING</span>
+      <span>儿童遥控变形消防车 · 最终版视频</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- 视频播放交互 -->
+<script>
+(function () {
+  const video = document.getElementById('owtoVideo');
+  const playButton = document.getElementById('owtoPlayButton');
+
+  if (!video || !playButton) return;
+
+  // 点击中央按钮才开始播放
+  playButton.addEventListener('click', async function () {
+    try {
+      await video.play();
+      playButton.style.display = 'none';
+    } catch (err) {
+      console.error('视频播放失败：', err);
+    }
+  });
+
+  // 暂停时重新显示中央播放按钮
+  video.addEventListener('pause', function () {
+    if (!video.ended) {
+      playButton.style.display = 'flex';
+    }
+  });
+
+  // 视频播放结束后重新显示按钮
+  video.addEventListener('ended', function () {
+    playButton.style.display = 'flex';
+  });
+
+  // 确保初始状态不自动播放
+  video.pause();
+  playButton.style.display = 'flex';
+
+})();
+</script>
 
     <div class="video-caption">
       <span>OWTO AI MARKETING</span>
