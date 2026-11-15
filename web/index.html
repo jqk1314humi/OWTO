@@ -187,41 +187,7 @@
 })();
 </script>
 
-    <div class="video-caption">
-      <span>OWTO AI MARKETING</span>
-      <span>儿童遥控变形消防车 · 最终版视频</span>
-    </div>
 
-  </div>
-</section>
-
-<script>
-(function () {
-  const video = document.getElementById('owtoVideo');
-
-  if (!video) return;
-
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-
-  // 页面解析后立即尝试自动播放
-  function tryPlay() {
-    if (video.paused) {
-      video.play().catch(err => {
-        console.warn('自动播放暂不可用：', err);
-      });
-    }
-  }
-
-  tryPlay();
-
-  video.addEventListener('canplay', tryPlay, {
-    once: true
-  });
-
-})();
-</script>
 
 </main>
 
