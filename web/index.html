@@ -72,10 +72,14 @@
 <!-- ============ SECTIONS ============ -->
 <div id="sections"></div>
 
+
 <!-- ============ VIDEO SHOWCASE ============ -->
 <section class="video-showcase" id="video-showcase">
   <div class="video-container">
-    <div class="video-tag">AI VIDEO GENERATION · TEAM OWTO</div>
+
+    <div class="video-tag">
+      AI VIDEO GENERATION · TEAM OWTO
+    </div>
 
     <h2 class="video-title">
       AI 短视频营销展示
@@ -86,22 +90,62 @@
     </p >
 
     <div class="video-frame">
+
       <video
+        id="owtoVideo"
         controls
-        preload="metadata"
+        autoplay
+        muted
         playsinline
+        webkit-playsinline
+        preload="auto"
+        loop
         poster=""
       >
-        <source src="mmexport1794752516463.mp4" type="video/mp4">
+        <source
+          src="https://cdn.jsdelivr.net/gh/jqk1314humi/OWTO@main/web/assets/mmexport1794752516463.mp4"
+          type="video/mp4"
+        >
+        你的浏览器不支持 HTML5 视频播放。
       </video>
+
     </div>
 
     <div class="video-caption">
       <span>OWTO AI MARKETING</span>
       <span>儿童遥控变形消防车 · 最终版视频</span>
     </div>
+
   </div>
 </section>
+
+<script>
+(function () {
+  const video = document.getElementById('owtoVideo');
+
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+
+  // 页面解析后立即尝试自动播放
+  function tryPlay() {
+    if (video.paused) {
+      video.play().catch(err => {
+        console.warn('自动播放暂不可用：', err);
+      });
+    }
+  }
+
+  tryPlay();
+
+  video.addEventListener('canplay', tryPlay, {
+    once: true
+  });
+
+})();
+</script>
 
 </main>
 
