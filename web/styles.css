@@ -458,3 +458,19 @@ details.prompt,details.doc-panel{overflow-wrap:anywhere}
     text-align: center;
   }
 }
+
+/* 视频极速播放模块 */
+.video-frame {
+    position: relative;
+    overflow: hidden;
+    background: #080d18;
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    background: #080d18;
+}
